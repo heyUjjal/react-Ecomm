@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from './Button'
-import { GlobalStyle } from '../GlobalStyle'
+
 
 function Hero({ name }) {
   return (
@@ -11,7 +11,7 @@ function Hero({ name }) {
         <div className='grid grid-two-column'>
           <div className='hero-section-data'>
             <p className='intro-data'>welcome to online-world</p>
-            <h1>Ease My Shop</h1>
+            <h1>{name}</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur fuga porro provident ipsam quo at non eos consequuntur? Soluta totam tenetur esse cupiditate cum dolore iste impedit tempora at omnis?
 
             </p>
