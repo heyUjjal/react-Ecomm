@@ -8,9 +8,14 @@ export const apiCore = createApi({
     endpoints: (builder) => ({
         getproducts: builder.query({
             query: () => `products`
+        }),
+
+        getsingleproduct : builder.query({
+            query: (id) => `products?id=${id}`
         })
 
     })
 })
 
 export const {useGetproductsQuery} = apiCore;
+export const {useGetsingleproductQuery} = apiCore;

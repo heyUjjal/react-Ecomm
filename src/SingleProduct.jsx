@@ -1,9 +1,42 @@
 import styled from "styled-components";
 import React from 'react'
+import { useGetsingleproductQuery } from "./redux/apiServices/apiCore";
+import { useParams } from "react-router-dom";
+import PageNavigation from "./components/PageNavigation";
+import Loading from "./components/Loading";
+import { useState } from "react";
+import MyImage from "./components/MyImage";
+import { Container } from "./components/Container";
 
 function SingleProduct() {
+  const {id} = useParams();
+  const {data, error, isLoading} = useGetsingleproductQuery(id);
+  const [productData, setProductData] = useState("");
+
+  const{ id: alias, name, company, price, description, category, stock, stars, reviews, image} = data || {};
+  
   return (
-     <Wrapper></Wrapper>
+    
+     <Wrapper>
+      
+      <PageNavigation title={name}/>
+      {isLoading && <Loading/>}
+
+      {/* the page content */}
+      <Container classname="container">
+        <div className="grid grid-two-coloumn">
+          {/* image part */}
+          <div className="product-images">
+           <MyImage imgs={image}/>
+          </div>
+          {/* Product-data section */}
+          <div className="product-data">
+
+          </div>
+
+        </div>
+      </Container>
+     </Wrapper>
   )
 }
 

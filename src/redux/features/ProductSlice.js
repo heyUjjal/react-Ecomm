@@ -13,6 +13,7 @@ const productSlice = createSlice(
         initialState,
         reducers:{
             setProductlist(state, action){
+                //  console.log(action.payload)
                 if(action.payload){
                     state.products = action.payload;
                 }
@@ -21,7 +22,7 @@ const productSlice = createSlice(
 
             setFeaturedProducts(state, action){
                 state.featuredProducts = action.payload?.filter((currEle) => {
-                    return currEle?.featured?.true
+                    return currEle?.featured === true
                 })
 
             }
