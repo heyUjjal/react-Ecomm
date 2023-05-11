@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
- width: 100%;
+ width: 90%;
  padding: 0rem 12rem;
 `;

@@ -7,6 +7,10 @@ import Loading from "./components/Loading";
 import { useState } from "react";
 import MyImage from "./components/MyImage";
 import { Container } from "./components/Container";
+import Stars from "./components/Stars";
+import FormatPrice from "./Helper/FormatPrice"
+import {TbTruckDelivery} from "react-icons/tb"
+import AddToCart from "./components/AddToCart";
 
 function SingleProduct() {
   const {id} = useParams();
@@ -24,13 +28,50 @@ function SingleProduct() {
 
       {/* the page content */}
       <Container classname="container">
-        <div className="grid grid-two-coloumn">
+        <div className="grid grid-two-column">
           {/* image part */}
           <div className="product-images">
            <MyImage imgs={image}/>
           </div>
           {/* Product-data section */}
           <div className="product-data">
+            <h2>{name}</h2>
+            <Stars star={stars} reviews={reviews}/> 
+            
+            <div className="product-data-price">
+              MRP:
+              <del>
+                <FormatPrice price={price+2500}/>
+              </del>
+
+            </div>
+            <p className="product-data-price product-data-real-price">
+              Deal of the Day: <FormatPrice price={price}/>
+              
+            </p>
+            <p>{description}</p>
+            <div className="product-data-warranty">
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon"/>
+                <p>Free Delivery</p>
+              </div>
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon"/>
+                <p>Free Delivery</p>
+              </div> <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon"/>
+                <p>Free Delivery</p>
+              </div> <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon"/>
+                <p>Free Delivery</p>
+              </div>
+            </div>
+            
+            <div className="product-data-info">
+            <p>Avalibility: {stock > 0 ?<span>In stock</span>: <span>not in stock</span>}</p>
+            </div>
+            <hr/>
+            {stock > 0 && <AddToCart data={data}/>}
 
           </div>
 
@@ -82,9 +123,11 @@ const Wrapper = styled.section`
 
     .product-data-price {
       font-weight: bold;
+      font-size: 1rem;
     }
     .product-data-real-price {
       color: ${({ theme }) => theme.colors.btn};
+      font-size: 1.2rem;
     }
     .product-data-info {
       display: flex;

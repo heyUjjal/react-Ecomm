@@ -18,7 +18,7 @@ function Product(ele) {
                 <div className="card-data-flex">
                     <h3>{name}</h3>
                     <p className="card-data--price">
-                        {FormatPrice(price)}
+                        {FormatPrice({price})}
                     </p>
                 </div>
             </div>

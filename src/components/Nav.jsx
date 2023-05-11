@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
 import {FiShoppingCart} from "react-icons/fi"
 import {CgMenu, CgClose} from "react-icons/cg"
+import { useSelector } from 'react-redux'
 
 function Nav() {
   const Nav = styled.nav`
@@ -197,6 +198,7 @@ function Nav() {
   
   
   `
+  const {totalItems} = useSelector((state) => state.cartCount);
   return (
     <Nav>
       <div className=' navbar '>
@@ -226,7 +228,7 @@ function Nav() {
         <li>
           <NavLink to="/cart" className="navbar-link cart-trolley--link">
             <FiShoppingCart className= "cart-trolley"/>
-            <span className="cart-total-item">10</span>
+            <span className="cart-total-item">{totalItems}</span>
           </NavLink>
         </li>
 
